@@ -1,6 +1,9 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
+  env: {
+    gmapApiKey: process.env.GOOGLE_API_KEY
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: "%s - covid-2019-tracker",
@@ -17,7 +20,11 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["~/plugins/axios-port.js"],
+  plugins: [
+    "~/plugins/axios-port.js",
+    "~/plugins/gmaps.js",
+    "~/plugins/click-outside.js"
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -59,5 +66,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    transpile: [/^vue2-google-maps($|\/)/]
+  }
 };

@@ -1,6 +1,10 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6"> </v-col>
+    <v-col cols="3">
+      <country-list />
+    </v-col>
+
+    <v-col cols="9"> <covid-map /> </v-col>
   </v-row>
 </template>
 

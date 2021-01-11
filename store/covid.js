@@ -6,6 +6,32 @@ export const state = () => ({
   global: null
 });
 
+export const getters = {
+  getCountriesName: state => {
+    if (state.countries === null) return null;
+    return state.countries.map(item => item.country);
+  },
+  getCountryInfo: state => {
+    if (state.countries === null) return null;
+    return state.countries.map(item => ({
+      cases: item.cases,
+      population: item.population,
+      ...item.countryInfo
+    }));
+  },
+  getListBySearch: state => search => {
+    return state.countries.filter(item => {
+      if (
+        item.country &&
+        item.country.toUpperCase().indexOf(search.toUpperCase()) > -1
+      ) {
+        console.log(item.country);
+        return item;
+      }
+    });
+  }
+};
+
 export const mutations = {
   [types.mutations.SET_ALL_COUNTRIES](state, countries) {
     state.countries = countries;
