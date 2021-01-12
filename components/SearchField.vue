@@ -52,9 +52,9 @@ export default {
       geocoder.geocode({ location: latlng }, (results, status) => {
         if (status === "OK") {
           if (results[0]) {
-            self.search = results[0].address_components[4].long_name;
-            console.log(self.search);
-            console.log(status);
+            self.search = this.getCountryOnGeoCode(
+              results[0].address_components
+            );
           } else {
             window.alert("No results found");
           }
@@ -62,6 +62,19 @@ export default {
           window.alert("Geocoder failed due to: " + status);
         }
       });
+    },
+    getCountryOnGeoCode(addrComponents) {
+      for (var i = 0; i < addrComponents.length; i++) {
+        if (addrComponents[i].types[0] == "country") {
+          return addrComponents[i].short_name;
+        }
+        if (addrComponents[i].types.length == 2) {
+          if (addrComponents[i].types[0] == "political") {
+            return addrComponents[i].short_name;
+          }
+        }
+      }
+      return false;
     },
     getLocation() {
       if (navigator.geolocation) {

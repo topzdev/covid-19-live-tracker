@@ -4,6 +4,14 @@
       <v-col cols="12">
         <search-field :search-country="searchCountry" />
       </v-col>
+      <v-col cols="12">
+        <v-select
+          label="Sort by"
+          hide-details=""
+          v-model="sort"
+          :items="sortItem"
+        ></v-select>
+      </v-col>
       <v-col cols="12" class="country-list__scroll">
         <v-row>
           <v-col v-for="item in countries" :key="item.country" cols="12">
@@ -19,6 +27,8 @@
 export default {
   data: () => ({
     search: "",
+    sort: "Country Name",
+    sortItem: ["Country Name", "Cases", "Recovery", "Deaths"],
   }),
 
   methods: {
@@ -32,6 +42,7 @@ export default {
     countries() {
       if (this.search !== "")
         return this.$store.getters["covid/getListBySearch"](this.search);
+
       return this.$store.state.covid.countries;
     },
   },

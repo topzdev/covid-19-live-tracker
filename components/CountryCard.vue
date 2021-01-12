@@ -41,7 +41,9 @@
     </v-card-text>
 
     <v-card-actions v-if="more">
-      <v-btn color="primary">View {{ info.country }}</v-btn>
+      <v-btn color="primary" :to="`/${info.country.toLowerCase()}`"
+        >View {{ info.country }}</v-btn
+      >
     </v-card-actions>
   </v-card>
 </template>

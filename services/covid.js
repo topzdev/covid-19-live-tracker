@@ -14,7 +14,7 @@ export default {
   },
 
   async getCountrySummary(country) {
-    const response = await apiClient.$get(`${API_URL}/v2/countries${country}`);
+    const response = await apiClient.$get(`${API_URL}/v2/countries/${country}`);
     return response;
   }
 };

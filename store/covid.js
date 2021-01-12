@@ -20,9 +20,11 @@ export const getters = {
     }));
   },
   getListBySearch: state => search => {
+    console.log("Searching... ", search);
     return state.countries.filter(item => {
       if (
         item.country &&
+        search &&
         item.country.toUpperCase().indexOf(search.toUpperCase()) > -1
       ) {
         console.log(item.country);
@@ -69,14 +71,16 @@ export const actions = {
   //get specific country summary
   async [types.actions.GET_COUNTRY_SUMMARY]({ commit }, country) {
     try {
+      console.log("Country", country);
       const data = await covidServices.getCountrySummary(country);
+      console.log("country", data);
       commit(types.mutations.SET_COUNTRY_SUMMARY, data);
     } catch (error) {
       console.error(error);
     }
   },
   //clear specific country data
-  async [types.actions.GET_COUNTRY_SUMMARY]({ commit }) {
+  async [types.actions.CLEAR_COUNTRY_SUMMARY]({ commit }) {
     try {
       commit(types.mutations.SET_COUNTRY_SUMMARY, null);
     } catch (error) {
