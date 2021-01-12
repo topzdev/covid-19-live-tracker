@@ -16,5 +16,12 @@ export default {
   async getCountrySummary(country) {
     const response = await apiClient.$get(`${API_URL}/v2/countries/${country}`);
     return response;
+  },
+
+  async getCountryHistory(country, lastday) {
+    const response = await apiClient.$get(
+      `${API_URL}/v2/historical/${country}?lastdays=${lastday}`
+    );
+    return response;
   }
 };

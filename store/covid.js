@@ -1,9 +1,10 @@
 import { types } from "./types";
-import covidServices from "@/services/covid";
+import covidServices from "../services/covid";
 export const state = () => ({
   countries: null,
   country: null,
-  global: null
+  global: null,
+  countryHistory: null
 });
 
 export const getters = {
@@ -44,6 +45,9 @@ export const mutations = {
 
   [types.mutations.SET_COUNTRY_SUMMARY](state, country) {
     state.country = country;
+  },
+  [types.mutations.SET_COUNTRY_HISTORY](state, history) {
+    state.countryHistory = history;
   }
 };
 
@@ -83,6 +87,17 @@ export const actions = {
   async [types.actions.CLEAR_COUNTRY_SUMMARY]({ commit }) {
     try {
       commit(types.mutations.SET_COUNTRY_SUMMARY, null);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  //clear specific country data
+  async [types.actions.GET_COUNTRY_HISTORY]({ commit }, { country }) {
+    try {
+      commit(types.mutations.SET_COUNTRY_HISTORY, null);
+      const data = await covidServices.getCountryHistory(country, 30);
+
+      commit(types.mutations.SET_COUNTRY_HISTORY, data.timeline);
     } catch (error) {
       console.error(error);
     }

@@ -2,7 +2,7 @@
   <GmapMap
     :options="options"
     :center="center"
-    :zoom="10"
+    :zoom="4"
     style="width: 100%; height: 100vh"
   >
     <GmapCircle

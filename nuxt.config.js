@@ -2,7 +2,8 @@ import colors from "vuetify/es5/util/colors";
 
 export default {
   env: {
-    gmapApiKey: process.env.GOOGLE_API_KEY
+    gmapApiKey: process.env.GOOGLE_API_KEY,
+    newsApiKey: process.env.NEWS_API_KEY
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -23,7 +24,8 @@ export default {
   plugins: [
     "~/plugins/axios-port.js",
     "~/plugins/gmaps.js",
-    "~/plugins/click-outside.js"
+    "~/plugins/click-outside.js",
+    { src: "~/plugins/chart.js", ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
