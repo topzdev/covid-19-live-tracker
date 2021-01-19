@@ -35,35 +35,38 @@
             />
           </v-col>
 
-          <v-col cols="4">
-            <critical-cases-card
-              :cases="summary.cases"
-              :criticalPerOneMillion="summary.criticalPerOneMillion"
-              :critical="summary.critical"
-            />
-          </v-col>
-          <v-col cols="4">
-            <test-cases-card
-              :tests="summary.tests"
-              :testsPerOneMillion="summary.testsPerOneMillion"
-              :population="summary.population"
-            />
-          </v-col>
-
           <v-col cols="12">
             <v-row>
               <v-col cols="8">
-                <country-history-card
-                  :iso2="summary.countryInfo.iso2"
-                  :country="summary.countryInfo.iso2"
-                />
-              </v-col>
-              <v-col cols="8">
-                <covid-news-list
-                  :country="summary.country"
-                  :iso2="summary.countryInfo.iso2"
-                  :iso3="summary.countryInfo.iso3"
-                />
+                <v-row>
+                  <v-col cols="6">
+                    <critical-cases-card
+                      :cases="summary.cases"
+                      :criticalPerOneMillion="summary.criticalPerOneMillion"
+                      :critical="summary.critical"
+                    />
+                  </v-col>
+                  <v-col cols="6">
+                    <test-cases-card
+                      :tests="summary.tests"
+                      :testsPerOneMillion="summary.testsPerOneMillion"
+                      :population="summary.population"
+                    />
+                  </v-col>
+                  <v-col cols="12">
+                    <country-history-card
+                      :iso2="summary.countryInfo.iso2"
+                      :country="summary.countryInfo.iso2"
+                    />
+                  </v-col>
+                  <v-col cols="12">
+                    <covid-news-list
+                      :country="summary.country"
+                      :iso2="summary.countryInfo.iso2"
+                      :iso3="summary.countryInfo.iso3"
+                    />
+                  </v-col>
+                </v-row>
               </v-col>
 
               <v-col cols="4">

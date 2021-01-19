@@ -1,6 +1,19 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
+  generate: {
+    devtools: false, //true
+    collapseBooleanAttributes: true,
+    decodeEntities: true,
+    minifyCSS: true,
+    minifyJS: true,
+    processConditionalComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true,
+    trimCustomFragments: true,
+    useShortDoctype: true
+  },
+
   env: {
     gmapApiKey: process.env.GOOGLE_API_KEY,
     newsApiKey: process.env.NEWS_API_KEY
@@ -69,6 +82,14 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    transpile: [/^vue2-google-maps($|\/)/]
+    transpile: [/^vue2-google-maps($|\/)/],
+    terser: {
+      // https://github.com/terser/terser#compress-options
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    }
   }
 };

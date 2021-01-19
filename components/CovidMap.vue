@@ -11,7 +11,7 @@
       :center="{ lat: m.lat, lng: m.long }"
       :clickable="false"
       :draggable="false"
-      :radius="m.cases / 10"
+      :radius="m.cases / 8"
       :options="{
         fillOpacity: 0.2,
         fillColor: 'red',

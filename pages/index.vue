@@ -4,8 +4,8 @@
       <country-list />
     </v-col>
 
-    <v-col class="covid-map" cols="9]">
-      <!-- <covid-map />  -->
+    <v-col class="covid-map px-0 py-0" cols="9">
+      <covid-map />
 
       <covid-global-stats class="covid-stats" />
     </v-col>
