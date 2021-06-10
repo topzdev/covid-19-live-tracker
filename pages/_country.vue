@@ -69,9 +69,9 @@
                 </v-row>
               </v-col>
 
-              <v-col cols="4">
+              <!-- <v-col cols="4">
                 <covid-twitter />
-              </v-col>
+              </v-col> -->
             </v-row>
           </v-col>
         </v-row>
@@ -99,10 +99,9 @@ export default {
     },
     country() {
       return this.$route.params.country;
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>
